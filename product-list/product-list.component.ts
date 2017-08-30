@@ -1,13 +1,15 @@
 
 import { Component, ViewContainerRef } from "@angular/core";
+import { Router, ActivatedRoute  } from "@angular/router";
 import { ModalDialogService } from "nativescript-angular/directives/dialogs";
 import { SearchBar } from "ui/search-bar";
+import {isAndroid} from "platform";
 
-import { ModalComponent } from './modal/app.modal'
-import { Product } from './services/product';
+import { ModalComponent } from '../modal/app.modal'
+import { Product } from '../services/product';
 
-import { ProductService } from './services/product.service';
-import { CheckOutService } from './services/checkout.service';
+import { ProductService } from '../services/product.service';
+import { CheckOutService } from '../services/checkout.service';
 
 export interface orderDetail {
     id: number;
@@ -24,11 +26,12 @@ export interface orderDetail {
 // }
 
 @Component({
-    selector: "ns-app",
-    templateUrl: "app.component.html",
+    selector: "ns-productList",
+    moduleId: module.id,
+    templateUrl: "./product-list.component.html",
 })
 
-export class AppComponent { 
+export class ProductListComponent { 
     public order: number;
     public products: Array<Product>;
     public filteredProducts: Array<Product>;
@@ -39,29 +42,15 @@ export class AppComponent {
 
     public constructor(private modal: ModalDialogService, private vcRef: ViewContainerRef,
             private productService: ProductService,
-            private checkOutService: CheckOutService) {
+            private checkOutService: CheckOutService,
+            private router: Router,
+            private activatedRoute: ActivatedRoute,) {
         this.order = 0;
         // console.log(this.orderValue);
         // console.log(productService.getProducts());
         this.products = productService.getProducts();
         this.assignCopy();
-        // this.products = [
-        //     {   
-        //         id: 1,
-        //         name: "kiwi super demo",
-        //         price: 20
-        //     },
-        //      {   
-        //         id: 2,
-        //         name: "Corneto",
-        //         price: 30
-        //     },
-        //      {   
-        //         id: 1,
-        //         name: "Mexicano",
-        //         price: 40
-        //     }
-        // ]
+        
     }
 
       assignCopy() {
@@ -104,10 +93,14 @@ export class AppComponent {
             viewContainerRef: this.vcRef
         };
         this.modal.showModal(ModalComponent, options).then(res=> {
-            console.log(res);
-            quantity =res;
-            this.checkOutService.addProductToCart(product, res);
-            this.order = this.checkOutService.getTheCartProductCount();
+            // console.log(res);
+            if(res){
+                console.log('this is when it is intergrer');
+                this.checkOutService.addProductToCart(product, res);
+                this.order = this.checkOutService.getTheCartProductCount();
+
+            }
+            
         });
 
         // create a line item here for the current product.
@@ -130,6 +123,22 @@ export class AppComponent {
 
     goToOrderSummary() {
         console.log('this is from the tap which should go to ordersumamry');
+        // this.router.navigate(['../summary'], { relativeTo: this.activatedRoute }).then(
+        //     res => {
+        //         console.log('navigatio succesfull');
+        //     }
+        // );
+
+        this.router.navigate(['/summary']);
+
+    }
+
+    public sBLoaded(args){
+        var searchbar:SearchBar = <SearchBar>args.object;
+        if(isAndroid){
+            
+            searchbar.android.clearFocus();
+        }
     }
     
 

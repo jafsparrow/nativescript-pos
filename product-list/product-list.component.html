@@ -1,0 +1,22 @@
+<ActionBar title="{N} Modal Example" class="action-bar">
+        
+    <ActionItem class="action-item" (tap)="goToOrderSummary()">
+        <Label [text]="order"></Label>
+    </ActionItem>
+
+</ActionBar>
+
+<StackLayout horizontalAlignment="center">
+    <SearchBar width="100%" hint="Search hint" [text]="searchPhrase" (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" 
+            color="black" textFieldBackgroundColor="white" textFieldHintColor="white"
+            (loaded)="sBLoaded($event)"></SearchBar>
+
+    <ListView [items]="filteredProducts" class="list-group">
+        <Template let-product="item">
+            <StackLayout class="list-group-item" (tap)="selectQuantity(product)">
+                <Label text="{{ product.name }}" class="label"></Label>
+            </StackLayout>
+        </Template>
+    </ListView> 
+    
+</StackLayout>

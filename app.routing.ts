@@ -6,12 +6,17 @@ import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 
 // import { ModalComponent } from './modal/app.modal'
+import { OrderSummaryComponent} from './ordersummary/order-sumamary.component';
+import { ProductListComponent} from './product-list/product-list.component';
+
 
 const routes: Routes = [
-    { path: "", redirectTo: "/items", pathMatch: "full" },
-   
+    { path: "", redirectTo: "/products", pathMatch: "full" },
+    { path: "products", component: ProductListComponent },
     { path: "items", component: ItemsComponent },
     { path: "item/:id", component: ItemDetailComponent },
+    { path: "summary", component: OrderSummaryComponent },
+
 ];
 
 @NgModule({

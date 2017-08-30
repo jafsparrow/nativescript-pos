@@ -13,6 +13,9 @@ import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 
 import { ModalComponent } from './modal/app.modal';
+import { OrderSummaryComponent} from './ordersummary/order-sumamary.component';
+import { ProductListComponent} from './product-list/product-list.component';
+
 
 
  
@@ -35,7 +38,9 @@ import { ModalComponent } from './modal/app.modal';
         AppComponent,
         ItemsComponent,
         ItemDetailComponent,
-        ModalComponent
+        ModalComponent,
+        OrderSummaryComponent,
+        ProductListComponent
     ],
     providers: [
         ItemService,

@@ -16,21 +16,15 @@ export interface Product {
 })
 export class ModalComponent {
  
-    public frameworks: Array<string>;
+
     public products: Array<Product>;
 
     public selectedProdcut: any;
  
     public constructor(private params: ModalDialogParams) {
         this.selectedProdcut = this.params.context.product;
-        console.log(this.selectedProdcut.name);
-        this.frameworks = [
-            "NativeScript",
-            "Xamarin",
-            "Onsen UI",
-            "Ionic Framework",
-            "React Native"
-        ];
+        console.log(this.selectedProdcut.price);
+
 
 
         this.products = [
@@ -66,7 +60,7 @@ export class ModalComponent {
     }
 
     printTextValue(value) {
-        console.log(value);
+        // console.log(value);
         this.params.closeCallback(value);
     }
 

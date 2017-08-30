@@ -8,5 +8,35 @@
                 </StackLayout>
             </Template>
     </ListView>  -->
+<ActionBar title="Order Summary" class="action-bar">
+</ActionBar>
 
-    <label text="hello world"> <Label>
+<GridLayout rows="auto, *, auto, auto">
+    <StackLayout *ngIf="!lineItems" row="1">
+            <Label text="No item in the cart"> </Label>
+    </StackLayout>
+
+
+    <ListView *ngIf="lineItems" [items]="lineItems" class="list-group" row="1">
+            <ng-template let-item="item">
+                <GridLayout rows="*" columns="*,*,*" >
+                    <Label row="1" col="0" [text]="item.name"
+                        class="list-group-item"
+                        ></Label>
+                    <Label row="1" col="1" [text]="item.quantity"
+                        class="list-group-item"></Label>
+                    <Label row="1" col="2" [text]="item.totalPrice"
+                        class="list-group-item"></Label>
+                </GridLayout>
+            </ng-template>
+    </ListView>
+    <StackLayout class="hr-light" row="2"></StackLayout>
+    <StackLayout orientation="horizontal" row="3"> 
+        <Label class="h2 pull-left m-10" text="Total Price :"></Label>
+        <Label class="h2 pull-right m-10" [text]="totalPrice()"></Label>
+    </StackLayout>
+</GridLayout>
+
+
+           
+    

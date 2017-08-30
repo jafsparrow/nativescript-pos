@@ -71,6 +71,8 @@ export class CheckOutService {
     }    
 
     getTheCart() {
+      console.log('from service fetching cart item.');
+      console.log(this.lineItems);
       return this.lineItems;
     }
 

@@ -7,7 +7,7 @@ import { LineItem } from '../services/line-item'
 @Component({
     selector: "ns-orderSummary",
     moduleId: module.id,
-    templateUrl: "order-summary.component.html"
+    templateUrl: "./order-summary.component.html"
 })
 
 export class OrderSummaryComponent { 
@@ -17,9 +17,16 @@ export class OrderSummaryComponent {
 
     public constructor(private checkOutService: CheckOutService) {
         this.lineItems = this.checkOutService.getTheCart();
-        console.log('this is from summary page');
+        console.log('the below should be line items.')
+        console.log(this.lineItems);
     }
 
     
-
+    totalPrice() {
+        let totalCost = 0;
+        this.lineItems.forEach(item => {
+            totalCost = totalCost + item.totalPrice;
+        });
+        return totalCost;
+    }
 }

@@ -1,3 +1,4 @@
+import { alert } from 'tns-core-modules/ui/dialogs';
 import { Component, ViewContainerRef } from "@angular/core";
 
 
@@ -28,5 +29,9 @@ export class OrderSummaryComponent {
             totalCost = totalCost + item.totalPrice;
         });
         return totalCost;
+    }
+
+    showAlert() {
+        alert('Confirm Order');
     }
 }

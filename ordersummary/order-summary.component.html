@@ -31,9 +31,14 @@
             </ng-template>
     </ListView>
     <StackLayout class="hr-light" row="2"></StackLayout>
-    <StackLayout orientation="horizontal" row="3"> 
-        <Label class="h2 pull-left m-10" text="Total Price :"></Label>
-        <Label class="h2 pull-right m-10" [text]="totalPrice()"></Label>
+    <StackLayout orientation="vertical" row="3">
+        <StackLayout orientation="horizontal"> 
+            <Label class="h2 pull-left m-10" text="Total Price :"></Label>
+            <Label class="h2 pull-right m-10" [text]="totalPrice()"></Label>
+        </StackLayout>
+      
+        <Button class="btn btn-primary btn-active" text="Confirm Order" (tap)="showAlert()"></Button>
+
     </StackLayout>
 </GridLayout>
 

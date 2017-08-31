@@ -29,6 +29,14 @@ export interface orderDetail {
     selector: "ns-productList",
     moduleId: module.id,
     templateUrl: "./product-list.component.html",
+    styles: [
+        `
+        .font-awesome {
+            font-family: "FontAwesome", fontawesome-webfont;
+            
+        }
+        `
+    ]
 })
 
 export class ProductListComponent { 

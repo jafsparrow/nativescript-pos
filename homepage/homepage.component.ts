@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 
 import { Page } from 'ui/page';
 
+
+
 @Component({
     selector: 'home-page',
     template: `
@@ -29,7 +31,7 @@ import { Page } from 'ui/page';
     <GridLayout row="2" class="nav-container">
         <GridLayout class="nav-item">
             <Label text="&#xf1c1; Orders" 
-                class="nav-item-text font-awesome"></Label>
+                class="nav-item-text font-awesome" [nsRouterLink]="['/productadd']"></Label>
         </GridLayout>
     </GridLayout>
 

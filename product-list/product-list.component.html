@@ -1,7 +1,9 @@
 <ActionBar title="IcreCream POS" class="action-bar">
-       
     <ActionItem class="action-item">
-        <Label [text]="order" class="Action h2"></Label>
+        <Label text="&#xf217;" class="Action font-awesome"></Label>
+    </ActionItem>
+    <ActionItem class="action-item">
+        <Label [text]="order" class="Action h3"></Label>
         
     </ActionItem>
            
@@ -22,7 +24,7 @@
            
     
     <ListView [items]="filteredProducts" class="list-group">
-        <Template let-product="item">
+        <ng-template let-product="item">
             <StackLayout class="list-group-item" (tap)="selectQuantity(product)" orientation="horizontal">
                 
                 <!-- <StackLayout width="10%"  style="background-color: green;">
@@ -30,7 +32,7 @@
                 <Label text="{{ product.name }}" class="label"></Label>
                 <!-- <Label text="test" class="pull-right"></Label> -->
             </StackLayout>
-        </Template>
+        </ng-template>
     </ListView> 
     
 </StackLayout>

@@ -16,6 +16,10 @@ import { HomePageComponent } from './homepage/homepage.component'
 import { ModalComponent } from './modal/app.modal';
 import { OrderSummaryComponent} from './ordersummary/order-sumamary.component';
 import { ProductListComponent} from './product-list/product-list.component';
+import { ProductAddComponent } from './product-list/product-add/product-add.component';
+
+
+
 
 
 
@@ -42,7 +46,8 @@ import { ProductListComponent} from './product-list/product-list.component';
         ModalComponent,
         OrderSummaryComponent,
         ProductListComponent,
-        HomePageComponent
+        HomePageComponent,
+        ProductAddComponent
     ],
     providers: [
         ItemService,

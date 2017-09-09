@@ -11,6 +11,10 @@ import { Product } from '../services/product';
 import { ProductService } from '../services/product.service';
 import { CheckOutService } from '../services/checkout.service';
 
+
+import { registerElement } from "nativescript-angular/element-registry";
+
+registerElement("Fab", () => require("nativescript-floatingactionbutton").Fab);
 export interface orderDetail {
     id: number;
     itemCount: number;
@@ -31,7 +35,7 @@ export interface orderDetail {
     templateUrl: "./product-list.component.html",
     styles: [
         `
-       
+
         `
     ]
 })
@@ -49,7 +53,8 @@ export class ProductListComponent {
             private productService: ProductService,
             private checkOutService: CheckOutService,
             private router: Router,
-            private activatedRoute: ActivatedRoute,) {
+            private activatedRoute: ActivatedRoute,
+            ) {
         this.order = 0;
         // console.log(this.orderValue);
         // console.log(productService.getProducts());
